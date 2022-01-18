@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Etch a Sketch</title>
+		<link rel = "stylesheet" href = "styles.css">
+		<script src = "index.js" defer></script>
+	</head>
+	
+	<body>
+		<h1 id = 'heading'>Etch A Sketch</h1>
+		
+		<div id = 'main'>
+		
+			<div class = "buttons">
+				<input id = 'color' type = 'color' value = '#000000'>
+				<button id = "color-mode" class = 'btn btn-select' class = "target">COLOR MODE</button>
+				<button id = "rainbow-mode" class = 'btn btn-select'>RANDOM MODE</button>
+				<button id = "eraser" class = 'btn btn-select'>ERASER</button>
+				<button id = "clearBtn" class = 'btn'>CLEAR</button>
+				<button id = "toggleGrid" class = 'btn'>SHOW GRID</button>
+				<div id = 'grid-box'>
+					<p id = "grid-text"></p>
+					<input id = "grid-size" type = 'range' min = '12' max = '100' value = '16'>
+				</div>
+			</div>
+			
+			<div class = "container"></div>
+		
+		</div>
+		
+		<footer id = "footer">
+			<p>&copy copyright Odin Project 2022</p>
+		</footer>
+	</body>
+</html>

@@ -1,16 +1,9 @@
 const container = document.querySelector('.container');
-
 const clearBtn = document.querySelector('#clearBtn');
-
 const eraserBtn = document.querySelector('#eraser');
-
 const colorBtn = document.querySelector('#color-mode');
-colorBtn.blur();
 const rainbowBtn = document.querySelector('#rainbow-mode');
-
-
 const colorSelector = document.querySelector('#color');
-
 const gridSizeBtn = document.querySelector('#grid-size');
 const gridText = document.querySelector('#grid-text');
 
@@ -18,13 +11,16 @@ const gridText = document.querySelector('#grid-text');
 const nodeList = container.children;
 const toggleGrid = document.querySelector('#toggleGrid');
 let gridSize = 16;
-
 let color = 'black';
 
-colorSelector.addEventListener('input',() => {color = colorSelector.value;})
 
+colorSelector.addEventListener('input',() => {
+	color = colorSelector.value;
 
-let colorArray = ['#ff0000','#00ff00','#0000ff','#ffa500','#ffff00','#8f00ff','4b0082'];
+	colorBtn.setAttribute('style','background:white; color:black');
+	eraserBtn.setAttribute('style','background:white; color:black');
+	rainbowBtn.setAttribute('style','background:white; color:black');
+})
 
 //function to make the grid
 
@@ -59,6 +55,7 @@ function deleteGrid(){
 //function to toggle between showing/hiding grid lines
 
 function showHide(){
+
 		if(toggleGrid.textContent === 'HIDE GRID' || nodeList.item(0).style.border !== 'none'){
 			for(let i = 0; i < nodeList.length; i++) 
 			{
@@ -78,8 +75,10 @@ function showHide(){
 
 
 function randomColor(){
-	return colorArray[Math.floor(Math.random()*7)];
+	return `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`;
 }
+
+
 
 function selectButton(colVal){
 	for(let i = 0; i < nodeList.length; i++) 
@@ -95,9 +94,9 @@ function selectButton(colVal){
 
 makeGrid(gridSize,gridSize);
 
-
 eraserBtn.addEventListener('focus',() => {
 	selectButton('white');
+	
 	colorBtn.setAttribute('style','background:white; color:black');
 	eraserBtn.setAttribute('style','background:black; color:white');
 	rainbowBtn.setAttribute('style','background:white; color:black');
@@ -108,6 +107,7 @@ eraserBtn.addEventListener('focus',() => {
 
 colorBtn.addEventListener('focus',() => {
 		selectButton(colorSelector.value);
+		
 		colorBtn.setAttribute('style','background:black; color:white');
 		eraserBtn.setAttribute('style','background:white; color:black');
 		rainbowBtn.setAttribute('style','background:white; color:black');
@@ -122,6 +122,7 @@ gridSizeBtn.addEventListener('input', () => {
 	gridSize = gridSizeBtn.value;
 	deleteGrid();
 	makeGrid(gridSize,gridSize);
+	
 	colorBtn.setAttribute('style','background:white; color:black');
 	eraserBtn.setAttribute('style','background:white; color:black');
 	rainbowBtn.setAttribute('style','background:white; color:black');
@@ -147,8 +148,7 @@ rainbowBtn.addEventListener('focus', () =>{
 	for(let i = 0; i < nodeList.length; i++) 
 	{	
 		nodeList.item(i).addEventListener('mouseover',() => 
-		{	nodeList.item(i).style.background = '';
-			nodeList.item(i).style.background = randomColor();
+		{	nodeList.item(i).style.background = randomColor();
 		});
 	}
 	colorBtn.setAttribute('style','background:white; color:black');
@@ -159,5 +159,4 @@ rainbowBtn.addEventListener('focus', () =>{
 		
 
 toggleGrid.addEventListener('click', showHide);
-
 
